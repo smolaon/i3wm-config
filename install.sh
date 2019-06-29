@@ -1,6 +1,6 @@
 #/bin/bash
 
-apt update && apt install i3blocks compton rofi feh
+apt update && apt install i3blocks compton rofi feh dunst
 
 wget https://github.com/supermarin/YosemiteSanFranciscoFont/raw/master/System%20San%20Francisco%20Display%20Bold.ttf -P ~/.fonts/
 wget https://github.com/supermarin/YosemiteSanFranciscoFont/raw/master/System%20San%20Francisco%20Display%20Regular.ttf -P ~/.fonts/

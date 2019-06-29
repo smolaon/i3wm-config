@@ -1,14 +1,21 @@
-sudo apt install i3-wm i3blocks
-sudo apt install vim
-sudo apt install terminator chromium-browser blueman
+sudo apt update && sudo apt full-upgrade -y
+sudo apt -y install i3-wm i3blocks
+sudo apt -y install vim curl playonlinux git
+sudo apt -y install terminator chromium-browser blueman
 
 #Slack
 
 #vscode
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+sudo apt-get -y install apt-transport-https
+sudo apt-get update
+sudo apt-get -y install code # or code-insiders
 
 #docker
-sudo apt-get remove docker docker-engine docker.io containerd runc
-sudo apt-get install \
+sudo apt -y remove docker docker-engine docker.io containerd runc
+sudo apt -y install \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -16,12 +23,12 @@ sudo apt-get install \
     software-properties-common
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository \
+sudo add-apt-repository -y \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
 sudo apt update
-sudo apt-get install docker-ce docker-ce-cli containerd.io
+sudo apt -y install docker-ce docker-ce-cli containerd.io
 sudo groupadd docker
 sudo usermod -aG docker $USER
 sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
@@ -43,6 +50,6 @@ echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sourc
 sudo apt-get update
 
 # 4. Install Spotify
-sudo apt-get install spotify-client
+sudo apt -y install spotify-client
 
 
